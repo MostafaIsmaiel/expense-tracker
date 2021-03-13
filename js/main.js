@@ -5,6 +5,7 @@ const list = document.getElementById('list');
 const form = document.getElementById('form');
 const text = document.getElementById('text');
 const amount = document.getElementById('amount');
+const date = document.getElementById('date');
 
 const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'));
 
@@ -14,13 +15,14 @@ let transactions = localStorage.getItem('transactions') !== null ? localStorageT
 function addTransaction(e) {
   e.preventDefault();
 
-  if (text.value.trim() === "" || amount.value.trim() === "") {
-    alert('Please add a text and amount');
+  if (text.value.trim() === "" || amount.value.trim() === "" || date.value === "") {
+    alert('Please add a text, amount & date value');
   } else {
     const transaction = {
       id: generateID(),
       text: text.value,
-      amount: +amount.value
+      amount: +amount.value,
+      date: date.value.toLocaleString()
     }
 
     transactions.push(transaction);
@@ -33,6 +35,7 @@ function addTransaction(e) {
 
     text.value = '';
     amount.value = '';
+    date.value = '';
   }
 }
 
@@ -52,7 +55,7 @@ function addTransactionDOM(transaction) {
   item.classList.add(transaction.amount < 0 ? 'minus' : 'plus');
 
   item.innerHTML = `
-    ${transaction.text} <span>${sign}${Math.abs(transaction.amount)}</span>
+    ${transaction.text} <span class="date">${transaction.date}</span> <span>${sign}${Math.abs(transaction.amount)}</span>
     <button class="delete-btn" onclick="removeTransaction(${transaction.id})">X</button>
   `;
   list.appendChild(item);
