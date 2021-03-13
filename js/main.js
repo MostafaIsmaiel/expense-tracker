@@ -7,6 +7,9 @@ const text = document.getElementById('text');
 const amount = document.getElementById('amount');
 const date = document.getElementById('date');
 
+const currentDate = new Date();
+date.value = currentDate.toISOString().slice(0, 10);
+
 const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'));
 
 let transactions = localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
@@ -35,7 +38,7 @@ function addTransaction(e) {
 
     text.value = '';
     amount.value = '';
-    date.value = '';
+    date.value = currentDate.toISOString().slice(0, 10);
   }
 }
 
