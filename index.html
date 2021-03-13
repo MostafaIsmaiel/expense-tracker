@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/style.css">
   <title>Expense Tracker</title>
 </head>
@@ -27,7 +28,9 @@
     <h3>History</h3>
     <ul id="list" class="list">
       <!-- <li class="minus">
-        Cash <span>-$400</span>
+        Cash 
+        <span class="date">13/03/2021</span>
+        <span>-$400</span>
         <button class="delete-btn">x</button>
       </li> -->
     </ul>
@@ -41,6 +44,10 @@
       <div class="form-control">
         <label for="amount">Amount <br>(negative - expense, postive - income)</label>
         <input type="number" id="amount" placeholder="Enter Amount">
+      </div>
+      <div class="form-control">
+        <label for="date">Date</label>
+        <input type="date" id="date">
       </div>
       <button class="btn">Add transaction</button>
     </form>
